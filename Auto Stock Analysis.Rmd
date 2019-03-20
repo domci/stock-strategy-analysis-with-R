@@ -1,0 +1,47 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+
+
+
+
+```{r, echo=FALSE}
+#Set rJava Home
+Sys.setenv(JAVA_HOME='C:/Program Files/Java/jre7')
+
+
+#Load Packages
+library(quantmod, warn.conflicts = FALSE, quietly = TRUE)
+library(PerformanceAnalytics, warn.conflicts = FALSE, quietly = TRUE)
+library(TTR, warn.conflicts = FALSE, quietly = TRUE)
+library(xts)
+library(ggplot2)
+
+
+
+load("C:/Users/Dom/Dropbox/R-Data/Stock Analysis/Auto Stock Analysis.RData")
+
+
+#names(data) <- symbols
+
+
+
+
+head(data[[1]])
+
+
+# Remove Empty List Elements
+data <- data[!sapply(data, is.null)]
+
+
+
+
+#Plot All Closing Prices
+lapply(data, function(x) plot(Ad(x), main=names(x[,4])))
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
